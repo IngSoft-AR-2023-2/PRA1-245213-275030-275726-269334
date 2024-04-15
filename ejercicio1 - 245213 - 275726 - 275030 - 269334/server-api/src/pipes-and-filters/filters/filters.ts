@@ -1,6 +1,5 @@
 import { Cliente } from "../data-structure/Cliente";
 
-<<<<<<< HEAD
 // Cuarto filtro: Verifica si necesita asistencia y lo imprime en consola.
 export const checkNeedsAssistence = (client: Cliente): Cliente => {
     let message: string = `La persona ${client.nombre} ${client.apellido} sera agendado en el proceso comun`
@@ -10,7 +9,6 @@ export const checkNeedsAssistence = (client: Cliente): Cliente => {
     console.log(message);
     return client;
   };
-=======
 export const filterInorrectTelephone = (input: Cliente): Cliente => {
     if ( !input.telefono.startsWith("09") || input.telefono.replace(/\s/g, "").length !== 9 || !/^\d+$/.test(input.telefono.replace(/\s/g, ""))) 
     {
@@ -41,4 +39,15 @@ export const ValidatorDepartament = (input: Cliente): Cliente => {
 }
 
 
->>>>>>> 395a9c3dc5b2b7449025f22d41ddf24342d11852
+export const filterCedula = (input: Cliente): Cliente => {
+    const cedulaStr = input.cedula.toString();
+    const longitudValida = cedulaStr.length >= 7 && cedulaStr.length <= 8;
+    const noComienzaConCero = cedulaStr[0] !== '0';
+
+    if (!longitudValida || !noComienzaConCero) {
+        console.log("Cedula invalida " + input.cedula );
+        throw new Error("Error cedula");
+    }
+  
+    return input;
+  }

@@ -4,6 +4,7 @@ import{
   filterInorrectTelephone,
   ValidatorDepartament,
 } from "./filters/filters"
+import { filterCedula } from "./filters/filters";
 import { Pipeline } from "./pipeline/Pipeline";
 import { QueueFactory } from "./pipeline/QueueFactory";
 import fs from "fs";
@@ -15,6 +16,7 @@ const pipeline = new Pipeline<Cliente>(
     checkNeedsAssistence,
     filterInorrectTelephone,
     ValidatorDepartament,
+    filterCedula,
   ],
   queueFactory
 );
