@@ -1,5 +1,8 @@
 import { Cliente } from "./data-structure/Cliente";
-import { filterInorrectTelephone } from "./filters/filters";
+import{
+  filterInorrectTelephone,
+  ValidatorDepartament,
+} from "./filters/filters"
 import { Pipeline } from "./pipeline/Pipeline";
 import { QueueFactory } from "./pipeline/QueueFactory";
 import fs from "fs";
@@ -9,6 +12,7 @@ const queueFactory = QueueFactory.getQueueFactory<Cliente>;
 const pipeline = new Pipeline<Cliente>(
   [
     filterInorrectTelephone,
+    ValidatorDepartament,
   ],
   queueFactory
 );
