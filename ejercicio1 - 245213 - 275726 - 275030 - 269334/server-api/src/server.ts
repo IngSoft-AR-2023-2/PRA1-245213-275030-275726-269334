@@ -24,8 +24,8 @@ app.post("/client", (req: Request, res: Response) => {
     res
       .status(200)
       .send({ message: `Se ha iniciado el proceso de agenda para la persona  ${client.nombre} ${client.apellido}` , client: req.body.client });
+      processClients(req.body.client);
 
-    processClients(req.body.client);
   });
 
 app.listen(port, () => {

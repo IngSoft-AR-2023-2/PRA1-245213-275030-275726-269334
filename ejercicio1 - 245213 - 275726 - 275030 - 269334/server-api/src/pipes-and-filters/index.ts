@@ -25,16 +25,12 @@ let outputs: string[] = [];
 
 pipeline.on("finalOutput", (data: Cliente) => {
   outputs.push("Final output: " + data.nombre);
-  if (outputs.length === 100) {
-    fs.writeFileSync("outputs.txt", outputs.join("\n"));
-  }
+  console.log( `Se ha finalizado satisfactoriamente el proceso de agenda para la persona ${data.nombre} ${data.apellido}`);
 });
 
 pipeline.on("errorInFilter", (error: Error, data: Cliente) => {
   outputs.push("Error in filter: " + error.message + " " + data.nombre);
-  if (outputs.length === 100) {
-    fs.writeFileSync("outputs.txt", outputs.join("\n"));
-  }
+  console.log( `No se ha podido agendar ${data.nombre} ${data.apellido}`);
 });
 
 export const processClients = (client: Cliente) => {
